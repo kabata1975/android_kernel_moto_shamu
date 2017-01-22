@@ -1058,12 +1058,8 @@ static void hub_activate(struct usb_hub *hub, enum hub_activation_type type)
 				goto init2;
 #endif
 			PREPARE_DELAYED_WORK(&hub->init_work, hub_init_func2);
-<<<<<<< HEAD
-			schedule_delayed_work(&hub->init_work,
-=======
 			queue_delayed_work(system_power_efficient_wq,
 					&hub->init_work,
->>>>>>> 7734b73... workqueue: fix subtle pool management issue which can stall whole worker_pool
 					msecs_to_jiffies(delay));
 
 			/* Suppress autosuspend until init is done */
@@ -1224,12 +1220,8 @@ static void hub_activate(struct usb_hub *hub, enum hub_activation_type type)
 		/* Don't do a long sleep inside a workqueue routine */
 		if (type == HUB_INIT2) {
 			PREPARE_DELAYED_WORK(&hub->init_work, hub_init_func3);
-<<<<<<< HEAD
-			schedule_delayed_work(&hub->init_work,
-=======
 			queue_delayed_work(system_power_efficient_wq,
 					&hub->init_work,
->>>>>>> 7734b73... workqueue: fix subtle pool management issue which can stall whole worker_pool
 					msecs_to_jiffies(delay));
 			device_unlock(hub->intfdev);
 			return;		/* Continues at init3: below */
